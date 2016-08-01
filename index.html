@@ -20,6 +20,15 @@
     <script type="text/babel">
       // Nav Component
       var Navbar = React.createClass({
+        propTypes: {
+          brand: React.PropTypes.string.isRequired
+        },
+        getDefaultProps: function(){
+          return {
+            brand: 'My Reactions'
+          }
+        },
+
         render: function() {
           return (
            <nav className="navbar navbar-inverse navbar-fixed-top">
@@ -31,7 +40,7 @@
                    <span className="icon-bar"></span>
                    <span className="icon-bar"></span>
                  </button>
-                 <a className="navbar-brand" href="#">Daniel React Boot Theme</a>
+                 <a className="navbar-brand" href="#">{this.props.brand}</a>
                </div>
                <div id="navbar" className="navbar-collapse collapse">
                   <ul className="nav navbar-nav">
@@ -65,12 +74,8 @@
       var Main = React.createClass({
         render: function() {
           return (
-            <div className="jumbotron">
-              <div className="container">
-                <h1>Hello World!</h1>
-                <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-                <p><a className="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
-              </div>
+            <div className="Main">
+
             </div>
           )
         }
