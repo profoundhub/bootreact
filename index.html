@@ -149,7 +149,7 @@
         }
       });
 
-      // App Component
+      // The App Component
       var App = React.createClass({
         getInitialState: function(){
           return {
@@ -172,6 +172,15 @@
             });
           },
         render: function() {
+          let jumbotron = '';
+            if (this.state.page === 'home'){
+              jumbotron = <Jumbotron />;
+            } else if (this.state.page === 'about'){
+              jumbotron = '';
+            } else if (this.state.page === 'contact'){
+              jumbotron = '';
+            }
+
           return (
             <div>
               <Navbar colour = "dark"
@@ -179,7 +188,7 @@
                 homeClick = {this.handleHomeClick}
                 aboutClick = {this.handleAboutClick}
                 contactClick = {this.handleContactClick} />
-              <Jumbotron />
+              {jumbotron}
               <PageHome />
               <Footer />
             </div>
