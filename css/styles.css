@@ -1,3 +1,11 @@
 .jumbotron {
   margin-top: -20px;
 }
+footer{
+  display: flex;
+}
+
+footer > p {
+  width: 500px;
+  margin: auto;
+}
