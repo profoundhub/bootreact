@@ -20,6 +20,14 @@
     <script type="text/babel">
       // Nav Component
       var Navbar = React.createClass({
+        propTypes: {
+          brand: React.PropTypes.string.isRequired
+        },
+        getDefaultProps: function(){
+          return {
+            brand: 'My Reactions'
+          }
+        },
         render: function() {
           return (
            <nav className="navbar navbar-inverse navbar-fixed-top">
@@ -31,7 +39,7 @@
                    <span className="icon-bar"></span>
                    <span className="icon-bar"></span>
                  </button>
-                 <a className="navbar-brand" href="#">Daniel React Boot Theme</a>
+                 <a className="navbar-brand" href="#">{this.props.brand}</a>
                </div>
                <div id="navbar" className="navbar-collapse collapse">
                   <ul className="nav navbar-nav">
@@ -48,13 +56,24 @@
 
       // Jumbotron Component
       var Jumbotron = React.createClass({
+        propTypes: {
+          header: React.PropTypes.string.isRequired,
+          text: React.PropTypes.string.isRequired
+        },
+        getDefaultProps: function(){
+          return {
+            header: 'Welcome!',
+            text: 'I hope you like our new website, made with React Components',
+            link: 'http://profoundideation.com'
+          }
+        },
         render: function() {
           return (
             <div className="jumbotron">
               <div className="container">
-                <h1>Hello World!</h1>
-                <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-                <p><a className="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+                <h1>{this.props.header}</h1>
+                <p>{this.props.text}</p>
+                <p><a className="btn btn-primary btn-lg" href="{this.props.link}" role="button">Learn more &raquo;</a></p>
               </div>
             </div>
           )
@@ -65,12 +84,8 @@
       var Main = React.createClass({
         render: function() {
           return (
-            <div className="jumbotron">
-              <div className="container">
-                <h1>Hello World!</h1>
-                <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-                <p><a className="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
-              </div>
+            <div className="Main">
+
             </div>
           )
         }
@@ -91,18 +106,28 @@
 
       // Footer Component
       var Footer = React.createClass({
+        propTypes: {
+          website_name: React.PropTypes.string.isRequired,
+          author_name: React.PropTypes.string.isRequired
+        },
+        getDefaultProps: function(){
+          return {
+            website_name: 'Profound Ideation Inc.',
+            author_name: 'Daniel Lim',
+            copy_year: 2016
+          }
+        },
         render: function() {
           return (
             <div>
               <hr />
               <footer>
-                <p>&copy; 2016 Profound Ideation, Inc.</p>
+                <p>&copy; {this.props.copy_year} {this.props.website_name} | {this.props.author_name}</p>
               </footer>
             </div>
           )
         }
       });
-
 
       // App Component
       var App = React.createClass({
