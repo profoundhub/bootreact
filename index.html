@@ -36,6 +36,19 @@
           } else {
               var navClass = 'navbar navbar-default navbar-fixed-top';
           }
+
+          let homeActive = '';
+          let aboutActive = '';
+          let contactActive = '';
+
+          if (this.props.page === 'home') {
+              homeActive = 'active';
+          } else if (this.props.page === 'about') {
+              aboutActive = 'active';
+          } else if (this.props.page === 'contact') {
+              contactActive = 'active';
+          }
+
           return (
             <div>
               <nav className={navClass}>
@@ -51,9 +64,9 @@
                   </div>
                   <div id="navbar" className="navbar-collapse collapse">
                      <ul className="nav navbar-nav">
-                       <li><a onClick={this.props.homeClick} href="#">Home</a></li>
-                       <li><a onClick={this.props.aboutClick} href="#about">About</a></li>
-                       <li><a onClick={this.props.contactClick} href="#contact">Contact</a></li>
+                       <li className={homeActive}><a onClick={this.props.homeClick} href="#">Home</a></li>
+                       <li className={aboutActive}><a onClick={this.props.aboutClick} href="#about">About</a></li>
+                       <li className={contactActive}><a onClick={this.props.contactClick} href="#contact">Contact</a></li>
                      </ul>
                   </div>
                 </div>
@@ -161,8 +174,8 @@
         render: function() {
           return (
             <div>
-              <Navbar
-                colour = "dark"
+              <Navbar colour = "dark"
+                page = {this.state.page}
                 homeClick = {this.handleHomeClick}
                 aboutClick = {this.handleAboutClick}
                 contactClick = {this.handleContactClick} />
