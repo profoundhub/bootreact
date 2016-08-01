@@ -25,31 +25,39 @@
         },
         getDefaultProps: function(){
           return {
-            brand: 'My Reactions'
+            brand: 'My Reactions',
+            colour: 'light'
           }
         },
         render: function() {
+          if (this.props.colour == 'dark') {
+              var navClass = 'navbar navbar-inverse navbar-fixed-top';
+          } else {
+              var navClass = 'navbar navbar-default navbar-fixed-top';
+          }
           return (
-           <nav className="navbar navbar-inverse navbar-fixed-top">
-             <div className="container">
-               <div className="navbar-header">
-                 <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                   <span className="sr-only">Toggle Navigation</span>
-                   <span className="icon-bar"></span>
-                   <span className="icon-bar"></span>
-                   <span className="icon-bar"></span>
-                 </button>
-                 <a className="navbar-brand" href="#">{this.props.brand}</a>
-               </div>
-               <div id="navbar" className="navbar-collapse collapse">
-                  <ul className="nav navbar-nav">
-                    <li className="active"><a href="#">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                  </ul>
+            <div>
+              <nav className={navClass}>
+                <div className="container">
+                  <div className="navbar-header">
+                    <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                      <span className="sr-only">Toggle Navigation</span>
+                      <span className="icon-bar"></span>
+                      <span className="icon-bar"></span>
+                      <span className="icon-bar"></span>
+                    </button>
+                    <a className="navbar-brand" href="#">{this.props.brand}</a>
+                  </div>
+                  <div id="navbar" className="navbar-collapse collapse">
+                     <ul className="nav navbar-nav">
+                       <li className="active"><a href="#">Home</a></li>
+                       <li><a href="#about">About</a></li>
+                       <li><a href="#contact">Contact</a></li>
+                     </ul>
+                  </div>
                 </div>
-             </div>
-           </nav>
+              </nav>
+            </div>
           )
         }
       });
@@ -134,7 +142,7 @@
         render: function() {
           return (
             <div>
-              <Navbar />
+              <Navbar colour='dark' />
               <Jumbotron />
               <PageHome />
               <Footer />
