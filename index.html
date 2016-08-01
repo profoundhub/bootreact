@@ -117,7 +117,34 @@
           return (
             <div className="container">
               <div className="row">
-                Main Content!
+                <h2 className="page-header">Home</h2>
+              </div>
+            </div>
+          )
+        }
+      });
+
+      // About Component
+      var PageAbout = React.createClass({
+        render: function() {
+          return (
+            <div className="container outer">
+              <div className="row inside">
+                <h2 className="page-header">About Us</h2>
+
+              </div>
+            </div>
+          )
+        }
+      });
+
+      // Contact Page Component
+      var PageContact = React.createClass({
+        render: function() {
+          return (
+            <div className="container outer">
+              <div className="row inside">
+                <h2 className="page-header">Contact Us</h2>
               </div>
             </div>
           )
@@ -173,12 +200,17 @@
           },
         render: function() {
           let jumbotron = '';
-            if (this.state.page === 'home'){
-              jumbotron = <Jumbotron />;
-            } else if (this.state.page === 'about'){
+          let page = '';
+
+            if (this.state.page === 'home') {
+              jumbotron = <Jumbotron />
+              page = <PageHome />
+            } else if (this.state.page === 'about') {
               jumbotron = '';
-            } else if (this.state.page === 'contact'){
+              page = <PageAbout />
+            } else if (this.state.page === 'contact') {
               jumbotron = '';
+              page = <PageContact />
             }
 
           return (
@@ -188,8 +220,9 @@
                 homeClick = {this.handleHomeClick}
                 aboutClick = {this.handleAboutClick}
                 contactClick = {this.handleContactClick} />
+
               {jumbotron}
-              <PageHome />
+              {page}
               <Footer />
             </div>
           )
